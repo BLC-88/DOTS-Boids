@@ -63,11 +63,13 @@ public class SpawnerDOTS : MonoBehaviour {
                     }
                     //Instantiate(prefab, spawnPos, Quaternion.identity);
                     Quaternion spawnRot = Quaternion.identity;
+                    float3 dir = new float3(0, 0, 1);
                     if (randomRot)
                     {
                         spawnRot = Quaternion.Euler(UnityEngine.Random.Range(-180f, 180f), UnityEngine.Random.Range(-180f, 180f), UnityEngine.Random.Range(-180f, 180f));
+                        dir = new Vector3(UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f));
                     }
-                    InstantiateEntity(new float3(spawnPos.x, spawnPos.y, spawnPos.z), spawnRot);
+                    InstantiateEntity(new float3(spawnPos.x, spawnPos.y, spawnPos.z), spawnRot, dir * 1000f);
                 }
             }
         }
@@ -101,16 +103,18 @@ public class SpawnerDOTS : MonoBehaviour {
         for (int i = 0; i < spawnCount; i++)
         {
             Quaternion spawnRot = Quaternion.identity;
+            float3 dir = new float3(0, 0, 1);
             if (randomRot)
             {
                 spawnRot = Quaternion.Euler(UnityEngine.Random.Range(-180f, 180f), UnityEngine.Random.Range(-180f, 180f), UnityEngine.Random.Range(-180f, 180f));
+                dir = new Vector3(UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f));
             }
             //GameObject boid = Instantiate(prefab, spawnPositions[i], spawnRot);
-            InstantiateEntity(new float3(spawnPositions[i].x, spawnPositions[i].y, spawnPositions[i].z), spawnRot);
+            InstantiateEntity(new float3(spawnPositions[i].x, spawnPositions[i].y, spawnPositions[i].z), spawnRot, dir * 1000f);
         }
     }
 
-    private void InstantiateEntity(float3 position, quaternion rotation) 
+    private void InstantiateEntity(float3 position, quaternion rotation, float3 direction) 
     {
         Entity myEntity = entityManager.Instantiate(entityPrefab);
         entityManager.SetComponentData(myEntity, new Translation 
@@ -120,6 +124,10 @@ public class SpawnerDOTS : MonoBehaviour {
         entityManager.SetComponentData(myEntity, new Rotation
         {
             Value = rotation
+        });
+        entityManager.SetComponentData(myEntity, new VelocityData
+        {
+            velocity = direction
         });
     }
 

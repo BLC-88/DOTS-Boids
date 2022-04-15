@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 4525427761639132713}
   - component: {fileID: 5471163278781622106}
   - component: {fileID: 9222538194528656140}
-  - component: {fileID: 3803570087495715990}
+  - component: {fileID: 6886397701313086343}
   m_Layer: 0
   m_Name: Boid_DOTS
   m_TagString: Untagged
@@ -114,9 +114,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f9d377cb42e86148a8918149a2b2e26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minSpeed: 15
-  maxSpeed: 20
-  maxSteerForce: 2
+  minSpeed: 20
+  maxSpeed: 30
+  maxSteerForce: 1
 --- !u!114 &678920608284829716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,7 +158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62136281b83ae9e4e9de841f76ed3fe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  separationWeight: 5
+  separationWeight: 1
 --- !u!114 &5471163278781622106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,8 +184,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fee9063008dc9f240827317da54aed74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cohesionWeight: 5
---- !u!114 &3803570087495715990
+  cohesionWeight: 10
+--- !u!114 &6886397701313086343
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -198,4 +198,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  targetWeight: 15
+  targetWeight: 1500

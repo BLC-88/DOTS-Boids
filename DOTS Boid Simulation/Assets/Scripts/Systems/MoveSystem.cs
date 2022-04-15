@@ -13,7 +13,7 @@ public class MoveSystem : SystemBase
 
         Entities.ForEach((
             ref Translation trans, 
-            in MoveSpeedData moveSpeed, 
+            in MoveSpeedData moveSpeed,
             in LocalToWorld ltw
             ) => 
         {

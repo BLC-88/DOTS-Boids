@@ -4,49 +4,6 @@ using Unity.Entities;
 using Unity.Jobs;
 using Unity.Mathematics;
 using Unity.Transforms;
-/*
-public class AlignmentSystem : JobComponentSystem 
-{
-    protected override JobHandle OnUpdate(JobHandle inputDeps) 
-    {
-        float deltaTime = Time.DeltaTime;
-
-        EntityQuery translationEQ = GetEntityQuery(ComponentType.ReadOnly<AlignmentData>(), ComponentType.ReadOnly<Translation>());
-        NativeArray<Translation> allTrans = translationEQ.ToComponentDataArray<Translation>(Allocator.TempJob);
-
-        JobHandle myJob = Entities.ForEach((
-            ref VelocityData vel, 
-            in Translation trans, 
-            in BoidData boidData,
-            in AlignmentData alignmentData, 
-            in ObservationData observationData, 
-            in FaceTargetData faceTargetData
-            ) => 
-        {
-            for (int i = 0; i < allTrans.Length; i++) 
-            {
-                if (trans.Value.Equals(allTrans[i].Value))
-                {
-                    continue;
-                }
-                if (math.distance(trans.Value, allTrans[i].Value) < observationData.observationDistance) 
-                {
-                    //float3 dir = allTrans[i].Value - trans.Value;
-                    //quaternion targetRot = quaternion.LookRotationSafe(dir, math.up());
-                    //rot.Value = math.slerp(rot.Value, targetRot, alignmentData.alignmentWeight * deltaTime);
-
-                    //float3 dir = allTrans[i].Value - trans.Value;
-                    float3 v = math.normalize(allTrans[i].Value - trans.Value) * boidData.maxSpeed - vel.velocity;
-                    vel.velocity += v * alignmentData.alignmentWeight * deltaTime;
-                }
-            }
-
-        }).WithDeallocateOnJobCompletion(allTrans).Schedule(inputDeps);
-
-        return myJob;
-    }
-}
-*/
 public class AlignmentSystem : SystemBase
 {
     protected override void OnUpdate()
