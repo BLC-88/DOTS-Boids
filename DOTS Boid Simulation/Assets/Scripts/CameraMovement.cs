@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CameraMovement : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class CameraMovement : MonoBehaviour
     float moveSpeedMultiplier = 1f;
     [SerializeField] float moveSpeedMultiplierMin = 0.1f;
     [SerializeField] float moveSpeedMultiplierMax = 10f;
+    [SerializeField] Text moveSpeedText;
 
     [Header("Sensitivity")]
     [SerializeField] float lookSensitivityX = 1f;
@@ -18,6 +20,7 @@ public class CameraMovement : MonoBehaviour
     [SerializeField] float FOVChangeRate = 10f;
     [SerializeField] float minFOV = 10f;
     [SerializeField] float maxFOV = 100f;
+    [SerializeField] Text FOVText;
 
     bool mouseInput;
     Vector3 moveDir;
@@ -57,10 +60,13 @@ public class CameraMovement : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
 
             float fov = cam.fieldOfView;
-            fov += -scrollWheel * FOVChangeRate;
+            fov += -scrollWheel * 10 * FOVChangeRate;
             fov = Mathf.Clamp(fov, minFOV, maxFOV);
             cam.fieldOfView = fov;
         }
         transform.localEulerAngles = new Vector3(rotationX, rotationY, 0);
+
+        moveSpeedText.text = "SPD: " + moveSpeedMultiplier.ToString("f1") + "x";
+        FOVText.text = "FOV: " + cam.fieldOfView;
     }
 }
