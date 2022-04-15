@@ -1692,14 +1692,8 @@ GameObject:
   - component: {fileID: 1417512310}
   - component: {fileID: 1417512309}
   - component: {fileID: 1417512308}
-  - component: {fileID: 1417512306}
-  - component: {fileID: 1417512304}
-  - component: {fileID: 1417512314}
-  - component: {fileID: 1417512313}
-  - component: {fileID: 1417512312}
-  - component: {fileID: 1417512311}
-  - component: {fileID: 1417512307}
   - component: {fileID: 1417512305}
+  - component: {fileID: 1417512304}
   m_Layer: 0
   m_Name: Target
   m_TagString: Untagged
@@ -1716,9 +1710,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1417512303}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2815e6b6810c8fe44afd82a0fa4950e1, type: 3}
+  m_Script: {fileID: 11500000, guid: 8ca150935b979014a95ab26ff6480dbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minSpeed: 20
+  maxSpeed: 30
+  sightRadius: 5
+  maxSteerForce: 1
+  separateWeight: 50
+  alignWeight: 10
+  cohesionWeight: 10
+  targetWeight: 0
 --- !u!114 &1417512305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1728,36 +1730,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1417512303}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fee9063008dc9f240827317da54aed74, type: 3}
+  m_Script: {fileID: 11500000, guid: 8e888936b8c68674193ef25bce74fa42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cohesionWeight: 10
---- !u!114 &1417512306
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1417512303}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea7d7495833204790ba1d3a8755397f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ConversionMode: 0
---- !u!114 &1417512307
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1417512303}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc5e30e4f793b04478ec595b1198351e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alignmentWeight: 10
 --- !u!23 &1417512308
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1821,63 +1796,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1417512311
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1417512303}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62136281b83ae9e4e9de841f76ed3fe4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  separationWeight: 50
---- !u!114 &1417512312
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1417512303}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: feecfc7edc80e054a92d8d732b7dbc67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocity:
-    x: 0
-    y: 0
-    z: 1
---- !u!114 &1417512313
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1417512303}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25b7cccca4b3a3044be811f1d3299159, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  observationDistance: 5
---- !u!114 &1417512314
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1417512303}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f9d377cb42e86148a8918149a2b2e26, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minSpeed: 20
-  maxSpeed: 30
-  maxSteerForce: 1
 --- !u!1 &1454922279
 GameObject:
   m_ObjectHideFlags: 0
@@ -1904,16 +1822,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1454922279}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33807762aa6b9b441a6e19bb84c4ac45, type: 3}
+  m_Script: {fileID: 11500000, guid: 1f926b47ec7affd4abaaecc1a0516f10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 3065668953652253791, guid: 3fccd35fd6a68e24da15d11d38faa0e0, type: 3}
-  spawnCount: 5000
-  spawnRandom: 1
-  randomRot: 0
+  spawnCount: 100
+  prefab: {fileID: 5539664166207698842, guid: fe1088b48cd8d024eba9f72e7575b452, type: 3}
   size: {x: 50, y: 50, z: 50}
-  spacing: 1
   centerPivot: 1
+  randomRot: 0
+  boids: []
 --- !u!4 &1454922281
 Transform:
   m_ObjectHideFlags: 0

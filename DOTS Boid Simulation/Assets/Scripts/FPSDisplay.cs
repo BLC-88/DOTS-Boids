@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class FPSDisplay : MonoBehaviour
 {
     [SerializeField] float spawnDelayTime = 2f;
-    bool measureFPS = false;
+    [HideInInspector] public bool measureFPS = false;
 
     float currentFPS;
     float averageFPS;
@@ -68,8 +68,9 @@ public class FPSDisplay : MonoBehaviour
         maximumFPSText.text = "MAX: " + maximumFPS.ToString("f2");
     }
 
-    IEnumerator SpawnDelay()
+    public IEnumerator SpawnDelay()
     {
+        measureFPS = false;
         yield return new WaitForSeconds(spawnDelayTime);
         measureFPS = true;
     }

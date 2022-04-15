@@ -25,14 +25,20 @@ public class BoidBehaviour : MonoBehaviour
     void Start()
     {
         target = FindObjectOfType<BoidTarget>().transform;
-        allBoids = FindObjectOfType<BoidSpawner>().boids;
+        //allBoids = FindObjectOfType<BoidSpawner>().boids;
 
         velocity = transform.forward;
+
+        BoidBehaviour[] boids = FindObjectsOfType<BoidBehaviour>();
+        for (int i = 0; i < boids.Length; i++)
+        {
+            allBoids.Add(boids[i].gameObject);
+        }
     }
 
     void Update()
     {
-        allBoids = FindObjectOfType<BoidSpawner>().boids;
+        //allBoids = FindObjectsOfType<BoidBehaviour>();
 
         if (target != null)
         {
