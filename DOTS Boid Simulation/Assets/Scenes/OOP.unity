@@ -1275,13 +1275,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnDelayTime: 1
-  measureTime: 40
+  measureTime: 400
   currentFPS: 0
   averageFPS: 0
   averagePercievedFrames: 100
   minimumFPS: 0
   maximumFPS: 0
-  boidIncreaseSpawnAmount: 200
+  boidIncreaseSpawnAmount: 5000
   boidCount: 0
   testFilename: DELETEME
 --- !u!4 &1356018211

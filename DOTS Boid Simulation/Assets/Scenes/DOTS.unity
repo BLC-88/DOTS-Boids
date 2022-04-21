@@ -335,7 +335,7 @@ MonoBehaviour:
   averagePercievedFrames: 100
   minimumFPS: 0
   maximumFPS: 0
-  boidIncreaseSpawnAmount: 2000
+  boidIncreaseSpawnAmount: 7000
   boidCount: 0
   testFilename: DELETEME
 --- !u!4 &1204251431
