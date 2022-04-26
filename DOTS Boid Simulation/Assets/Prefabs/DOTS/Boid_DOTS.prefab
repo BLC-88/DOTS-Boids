@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25b7cccca4b3a3044be811f1d3299159, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  observationDistance: 5
+  observationDistance: 10
 --- !u!114 &-5396744428505817119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,4 +198,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  targetWeight: 1500
+  targetWeight: 2000

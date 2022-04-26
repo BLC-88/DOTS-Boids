@@ -24,6 +24,7 @@ public class CameraMovement : MonoBehaviour
 
     bool mouseInput;
     Vector3 moveDir;
+    Vector3 moveDirVer;
     float rotationX, rotationY;
     float scrollWheel;
 
@@ -39,8 +40,9 @@ public class CameraMovement : MonoBehaviour
     void Update()
     {
         moveDir = (transform.forward * Input.GetAxisRaw("Vertical")) + (transform.right * Input.GetAxisRaw("Horizontal")).normalized;
-        transform.position += moveDir * moveSpeed * moveSpeedMultiplier * Time.deltaTime;
-        transform.position += Vector3.up * Input.GetAxis("Jump") * moveSpeed * moveSpeedMultiplier * Time.deltaTime;
+        transform.position += moveDir * moveSpeed * moveSpeedMultiplier * Time.unscaledDeltaTime;
+        moveDirVer = Vector3.up * Input.GetAxisRaw("Jump");
+        transform.position += moveDirVer * moveSpeed * moveSpeedMultiplier * Time.unscaledDeltaTime;
 
         mouseInput = Input.GetKey(KeyCode.Mouse1);
         scrollWheel = Input.GetAxis("Mouse ScrollWheel");
@@ -49,20 +51,25 @@ public class CameraMovement : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.Locked;
 
-            rotationY += Input.GetAxis("Mouse X") * lookSensitivityX * Time.timeScale;
-            rotationX -= Input.GetAxis("Mouse Y") * lookSensitivityY * Time.timeScale;
+            rotationY += Input.GetAxis("Mouse X") * lookSensitivityX;
+            rotationX -= Input.GetAxis("Mouse Y") * lookSensitivityY;
 
             moveSpeedMultiplier += scrollWheel;
             moveSpeedMultiplier = Mathf.Clamp(moveSpeedMultiplier, moveSpeedMultiplierMin, moveSpeedMultiplierMax);
         }
         else
         {
-            Cursor.lockState = CursorLockMode.None;
+            //Cursor.lockState = CursorLockMode.None;
 
-            float fov = cam.fieldOfView;
-            fov += -scrollWheel * 10 * FOVChangeRate;
-            fov = Mathf.Clamp(fov, minFOV, maxFOV);
-            cam.fieldOfView = fov;
+            transform.position += transform.forward * scrollWheel * moveSpeed * moveSpeedMultiplier;
+
+            if (Input.GetKey(KeyCode.LeftControl))
+            {
+                float fov = cam.fieldOfView;
+                fov += -scrollWheel * 10 * FOVChangeRate;
+                fov = Mathf.Clamp(fov, minFOV, maxFOV);
+                cam.fieldOfView = fov;
+            }
         }
         transform.localEulerAngles = new Vector3(rotationX, rotationY, 0);
 
