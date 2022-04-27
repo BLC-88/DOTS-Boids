@@ -50,8 +50,8 @@ MonoBehaviour:
   maxSteerForce: 2
   separateWeight: 1
   alignWeight: 10
-  cohesionWeight: 5
-  targetWeight: 15
+  cohesionWeight: 10
+  targetWeight: 2000
 --- !u!1 &8746279642150548850
 GameObject:
   m_ObjectHideFlags: 0

@@ -59,7 +59,7 @@ public class CameraMovement : MonoBehaviour
         }
         else
         {
-            //Cursor.lockState = CursorLockMode.None;
+            Cursor.lockState = CursorLockMode.None;
 
             transform.position += transform.forward * scrollWheel * moveSpeed * moveSpeedMultiplier;
 
